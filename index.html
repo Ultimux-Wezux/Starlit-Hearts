@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=2.5, viewport-fit=cover">
+  <title>✨ Starlit Hearts · A Masterwork of Fantasy Love ✨</title>
+  <style>
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-deep: #04020d;
+      --bg-card: rgba(10, 6, 22, 0.55);
+      --text-primary: #ece0ff;
+      --text-secondary: #cbb8f0;
+      --accent: #b27aff;
+      --accent-glow: #d9a6ff;
+      --border-subtle: rgba(255, 210, 245, 0.2);
+      --border-glow: rgba(255, 235, 250, 0.7);
+      --shadow-card: 0 25px 45px rgba(0,0,0,0.65), 0 0 35px rgba(130, 80, 210, 0.25);
+      --shadow-hover: 0 35px 65px rgba(140, 80, 230, 0.6), 0 0 60px rgba(255, 180, 230, 0.65);
+      --radius-card: 4.5rem;
+      --font-display: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+    }
+
+    body {
+      background: var(--bg-deep);
+      background-image:
+        radial-gradient(ellipse at 20% 10%, #160f2e 0%, transparent 65%),
+        radial-gradient(ellipse at 80% 85%, #1a1035 0%, transparent 65%),
+        radial-gradient(ellipse at 50% 50%, #0a0620 0%, #020010 100%);
+      font-family: var(--font-display);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      color: var(--text-primary);
+      cursor: default;
+      position: relative;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    
+    .starfield {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    
+    .story-scroll {
+      width: 100%;
+      max-width: 920px;
+      padding: 2.5rem 2rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 6.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    
+    .prologue {
+      text-align: center;
+      margin-bottom: 0.5rem;
+      animation: fadeInDown 1.4s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+    }
+    .prologue h1 {
+      font-size: 4.2rem;
+      font-weight: 650;
+      color: #f3e2ff;
+      text-shadow: 0 0 45px #9f6eff, 0 0 20px #ffffffcc, 0 4px 15px rgba(0,0,0,0.8);
+      letter-spacing: 4px;
+      font-style: italic;
+      margin-bottom: 0.4rem;
+      line-height: 1.1;
+    }
+    .prologue .subtitle {
+      font-size: 1.2rem;
+      color: #cfbaf0;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      opacity: 0.8;
+      font-weight: 300;
+    }
+    .prologue .ornament {
+      margin: 1.8rem auto 0.5rem;
+      width: 90px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c49bff, #ffb7dd, transparent);
+      border-radius: 5px;
+    }
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-35px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    
+    .chapter {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background: var(--bg-card);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-radius: var(--radius-card);
+      padding: 3rem 2.5rem;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--border-subtle);
+      transition: all 0.55s cubic-bezier(0.23, 1, 0.32, 1);
+      opacity: 0;
+      animation: riseChapter 0.95s ease-out forwards;
+      position: relative;
+      will-change: transform, box-shadow;
+    }
+
+    /* staggered delays for 12 chapters */
+    .chapter:nth-child(1) { animation-delay: 0.06s; }
+    .chapter:nth-child(2) { animation-delay: 0.2s; }
+    .chapter:nth-child(3) { animation-delay: 0.34s; }
+    .chapter:nth-child(4) { animation-delay: 0.48s; }
+    .chapter:nth-child(5) { animation-delay: 0.62s; }
+    .chapter:nth-child(6) { animation-delay: 0.76s; }
+    .chapter:nth-child(7) { animation-delay: 0.9s; }
+    .chapter:nth-child(8) { animation-delay: 1.04s; }
+    .chapter:nth-child(9) { animation-delay: 1.18s; }
+    .chapter:nth-child(10) { animation-delay: 1.32s; }
+    .chapter:nth-child(11) { animation-delay: 1.46s; }
+    .chapter:nth-child(12) { animation-delay: 1.6s; }
+
+    @keyframes riseChapter {
+      0% { opacity: 0; transform: translateY(70px) scale(0.93); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .chapter:hover {
+      box-shadow: var(--shadow-hover);
+      border-color: var(--border-glow);
+      transform: scale(1.012) translateY(-6px);
+      background: rgba(16, 10, 32, 0.7);
+    }
+
+    /* subtle inner highlight on hover */
+    .chapter::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      border-radius: var(--radius-card);
+      background: radial-gradient(circle at 30% 20%, rgba(255,200,240,0.08), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.5s;
+      pointer-events: none;
+    }
+    .chapter:hover::after { opacity: 1; }
+
+    .chapter-number {
+      font-size: 0.95rem;
+      letter-spacing: 7px;
+      text-transform: uppercase;
+      color: #c8adff;
+      text-shadow: 0 0 16px #7e4fd6;
+      margin-bottom: 0.6rem;
+      font-weight: 400;
+      background: rgba(0,0,0,0.3);
+      padding: 0.25rem 2.4rem;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .chapter-title {
+      font-size: 3.1rem;
+      font-weight: 620;
+      color: #fae3ff;
+      text-shadow: 0 0 30px #b77aff, 0 0 10px #ffffffb0;
+      margin-bottom: 1.6rem;
+      line-height: 1.2;
+      font-style: italic;
+      letter-spacing: 1.8px;
+    }
+
+    .scene-symbol {
+      font-size: 3.2rem;
+      margin: 0.2rem 0 1.1rem;
+      filter: drop-shadow(0 0 20px #e3b5ff);
+      animation: softGlow 3.8s infinite alternate;
+    }
+    @keyframes softGlow {
+      0% { filter: drop-shadow(0 0 12px #b47bff); transform: scale(1); }
+      100% { filter: drop-shadow(0 0 32px #ffb3e6); transform: scale(1.09); }
+    }
+
+    .narrative {
+      font-size: 1.5rem;
+      color: #e2d1fc;
+      line-height: 1.85;
+      margin: 1.2rem 0;
+      font-weight: 400;
+      max-width: 92%;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.75);
+      background: rgba(5, 2, 16, 0.5);
+      padding: 1.2rem 2.2rem;
+      border-radius: 3rem;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      letter-spacing: 0.25px;
+    }
+
+    .extended-text {
+      font-size: 1.3rem;
+      color: #cdb9f0;
+      margin-top: 1rem;
+      font-style: italic;
+      opacity: 0.88;
+      border-left: 3px solid #aa7eff;
+      padding-left: 1.6rem;
+      text-align: left;
+      max-width: 85%;
+      background: linear-gradient(90deg, rgba(150, 110, 240, 0.18), transparent);
+      border-radius: 0 22px 22px 0;
+      line-height: 1.6;
+    }
+
+    .divider {
+      width: 75px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #dbb5ff, #f9b8dd, transparent);
+      margin: 2rem auto;
+      border-radius: 10px;
+    }
+
+    
+    .outro {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: rgba(18, 10, 34, 0.6);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border-radius: 5rem;
+      padding: 4.5rem 2.8rem;
+      margin-top: 2rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(255, 220, 250, 0.35);
+      box-shadow: 0 35px 70px rgba(0,0,0,0.7), 0 0 60px rgba(170, 120, 255, 0.45);
+      animation: fadeInOutro 1.3s ease-out;
+      transition: all 0.5s;
+      position: relative;
+    }
+    .outro:hover {
+      box-shadow: 0 40px 80px rgba(140, 80, 230, 0.65), 0 0 75px rgba(255, 190, 235, 0.7);
+      border-color: rgba(255, 240, 250, 0.8);
+    }
+    @keyframes fadeInOutro {
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .outro-symbol {
+      font-size: 4.8rem;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 0 30px #ffb8e6);
+      animation: softGlow 3s infinite alternate;
+    }
+    .outro h2 {
+      font-size: 3.4rem;
+      color: #ffe5ff;
+      text-shadow: 0 0 35px #c58aff;
+      font-style: italic;
+      margin-bottom: 1.2rem;
+      letter-spacing: 2px;
+    }
+    .outro-message {
+      font-size: 1.65rem;
+      color: #ddccff;
+      max-width: 650px;
+      line-height: 1.8;
+      margin: 1.5rem 0;
+      background: rgba(0,0,0,0.35);
+      padding: 1.6rem 2.4rem;
+      border-radius: 3rem;
+      backdrop-filter: blur(4px);
+    }
+    .outro-signature {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #f0d9ff;
+      margin-top: 2rem;
+      letter-spacing: 3px;
+      text-shadow: 0 0 25px #c27aff;
+      font-style: italic;
+    }
+
+    
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #191331; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb { background: #9f7aea; border-radius: 10px; box-shadow: inset 0 0 10px #ffe0f0; }
+
+    
+    @media (max-width: 600px) {
+      .prologue h1 { font-size: 2.8rem; }
+      .chapter-title { font-size: 2.2rem; }
+      .narrative { font-size: 1.25rem; padding: 0.9rem 1.5rem; }
+      .outro h2 { font-size: 2.5rem; }
+      .outro-message { font-size: 1.3rem; }
+      .story-scroll { gap: 5rem; }
+    }
+  </style>
+</head>
+<body>
+  
+  <canvas class="starfield" id="starfieldCanvas"></canvas>
+
+  <div class="story-scroll" id="storyScroll">
+    
+    <div class="prologue">
+      <h1>✨ Starlit Hearts ✨</h1>
+      <div class="subtitle">a fantasy love eternal</div>
+      <div class="ornament"></div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      
+      const canvas = document.getElementById('starfieldCanvas');
+      const ctx = canvas.getContext('2d');
+      let width, height;
+      let stars = [];
+
+      function resizeCanvas() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+        initStars();
+      }
+
+      function initStars() {
+        const count = Math.floor(width * height * 0.00025); // density
+        stars = [];
+        for (let i = 0; i < count; i++) {
+          stars.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            radius: Math.random() * 1.8 + 0.3,
+            brightness: Math.random() * 0.7 + 0.3,
+            twinkleSpeed: Math.random() * 0.008 + 0.003,
+            twinkleOffset: Math.random() * Math.PI * 2
+          });
+        }
+      }
+
+      function drawStars(timestamp) {
+        ctx.clearRect(0, 0, width, height);
+        for (const star of stars) {
+          const twinkle = Math.sin(timestamp * star.twinkleSpeed + star.twinkleOffset) * 0.25 + 0.75;
+          const alpha = star.brightness * twinkle;
+          ctx.fillStyle = `rgba(255, 235, 250, ${alpha})`;
+          ctx.beginPath();
+          ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+          ctx.fill();
+          
+          
+          if (star.radius > 1.3 && twinkle > 0.9) {
+            ctx.fillStyle = `rgba(210, 180, 255, ${alpha * 0.4})`;
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.radius * 2.2, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+        requestAnimationFrame(drawStars);
+      }
+
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+      requestAnimationFrame(drawStars);
+
+     
+      const chapters = [
+        {
+          num: "I",
+          title: "The Bridge of Forgotten Stars",
+          symbol: "🌉✨",
+          text: "Elias, a man with no past but eyes full of constellations, lived beneath the silver arch of Elderglow Bridge. Lady Seraphina of House Velys, betrothed to duty, dropped a golden coin that transformed into a luminous moth. It led her to him.",
+          extra: "He spoke of the 'Veil Walker', a spirit said to unite divided souls. She realized the moth was no accident—it bore the mark of her childhood dreams."
+        },
+        {
+          num: "II",
+          title: "The Rose Prophet",
+          symbol: "🌿🔮",
+          text: "In the hidden Glimmergarden, Elias read poetry to wounded sparrows. Seraphina returned, disguised in a simple cloak. A blind oracle appeared, calling them 'the fracture menders'. She foretold that their love would reforge a shattered relic.",
+          extra: "The relic was the Luminara Heart, broken ages ago when greed divided the kingdom. Only a bond between extremes could restore it."
+        },
+        {
+          num: "III",
+          title: "Masquerade of Cinders",
+          symbol: "🎭👑",
+          text: "At the royal masquerade, Seraphina danced with a mysterious figure in a patched coat. It was Elias, masked with starlight. The chandeliers flickered with unspoken magic, and the Queen's advisor sensed an ancient prophecy stirring.",
+          extra: "He whispered, 'I am the shadow your light cast into the world.' The orchestra played a forbidden melody that made the statues weep."
+        },
+        {
+          num: "IV",
+          title: "The Alley of Vanished Things",
+          symbol: "🏮🌌",
+          text: "Elias led her through the Nocturne Market, where lost memories were sold in jars. He knelt with a ring carved from a fallen star. She accepted, and the lanterns wept golden petals that spelled their names in the old tongue.",
+          extra: "The ring was a fragment of the Luminara Heart. It pulsed with warmth, recognizing its other half within Seraphina's own heirloom locket."
+        },
+        {
+          num: "V",
+          title: "The Forest of Echoes",
+          symbol: "🌲👣",
+          text: "Seraphina's family demanded a trial. Elias entered the Forest of Echoes, where his deepest fears took form. Seraphina followed, refusing to let him face the shadows alone. Together, they turned specters into starlight.",
+          extra: "They discovered an ancient mural: a beggar and a queen holding the Luminara Heart, exactly as the prophecy described."
+        },
+        {
+          num: "VI",
+          title: "The Moon Court's Judgment",
+          symbol: "🌙⚖️",
+          text: "Before the Moon Court, Elias spoke not of wealth but of bridges built from kindness. Seraphina renounced her title, declaring love the only crown. The moon itself bore witness, casting a silver glow that silenced all objection.",
+          extra: "The High Arbiter revealed that Elias carried the lost lineage of the Starwardens, guardians of the heart relic. His homelessness was a veil of protection."
+        },
+        {
+          num: "VII",
+          title: "The Shattered Locket",
+          symbol: "💔🔐",
+          text: "Seraphina's locket, a family heirloom, cracked open to reveal a hidden key. It fit perfectly into Elias's ring. When joined, they projected a map leading to the Luminara Heart's resting place beneath the city.",
+          extra: "They learned the heart was broken by a king who feared the unity of common and noble blood. Their love was the key to mend it."
+        },
+        {
+          num: "VIII",
+          title: "The Sunken Sanctuary",
+          symbol: "🏛️💧",
+          text: "Beneath the ancient cathedral ruins, they found the Luminara Heart—split in two. As they placed the ring and key upon it, their memories intertwined. The chamber filled with a choir of ancestral voices blessing them.",
+          extra: "The heart mended, sending a wave of harmony across the land. Barren fields bloomed, and old feuds began to heal."
+        },
+        {
+          num: "IX",
+          title: "A Kingdom Transformed",
+          symbol: "🏰🌱",
+          text: "With the relic restored, Elias and Seraphina established the Haven of Common Stars. Nobles and commoners worked side by side. Elias taught astronomy; Seraphina opened the libraries to all children.",
+          extra: "They built bridges both stone and spiritual, connecting districts once divided by walls and prejudice."
+        },
+        {
+          num: "X",
+          title: "The Celestial Accord",
+          symbol: "📜🌟",
+          text: "On the peak of Starveil Mountain, they signed the Accord of Twin Lights, officially dissolving the rigid caste system. Their signatures glowed with stardust, and the northern lights danced in celebration.",
+          extra: "It was said that the Wind itself carried their vows to every corner of the realm, whispering 'All love is noble.'"
+        },
+        {
+          num: "XI",
+          title: "The Weaving of Forever",
+          symbol: "💞🕊️",
+          text: "In a quiet ceremony before the Luminara Heart, they exchanged simple vows. No crowns, no titles—only two souls bound by choice. The relic emitted a gentle pulse, engraving their names into its crystal core.",
+          extra: "Elias gave her a new locket containing a miniature star map. She gave him a cloak embroidered with threads from her own journey."
+        },
+        {
+          num: "XII",
+          title: "A Wedding Woven in Constellations",
+          symbol: "💒🌠",
+          text: "In the cathedral of floating crystals, barefoot and crowned with ivy, they wed. The homeless dreamer and the noble heart became legend. Stars rearranged to spell their love, and the Luminara Heart shone brighter than any sun.",
+          extra: "Every guest wore mismatched shoes, honoring his path. And as they kissed, the stars themselves sighed, 'At last, the circle is whole.'"
+        }
+      ];
+
+      const storyContainer = document.getElementById('storyScroll');
+
+      function renderStory() {
+       
+        const prologueEl = document.querySelector('.prologue');
+        
+        while (storyContainer.children.length > 1) {
+          storyContainer.removeChild(storyContainer.lastChild);
+        }
+       
+        if (!prologueEl) {
+          const newPrologue = document.createElement('div');
+          newPrologue.className = 'prologue';
+          newPrologue.innerHTML = `<h1>✨ Starlit Hearts ✨</h1><div class="subtitle">a fantasy love eternal</div><div class="ornament"></div>`;
+          storyContainer.appendChild(newPrologue);
+        }
+
+       
+        chapters.forEach((ch) => {
+          const chapterDiv = document.createElement('div');
+          chapterDiv.className = 'chapter';
+          chapterDiv.innerHTML = `
+            <div class="chapter-number">◈ Chapter ${ch.num} ◈</div>
+            <div class="chapter-title">${ch.title}</div>
+            <div class="scene-symbol">${ch.symbol}</div>
+            <div class="divider"></div>
+            <div class="narrative">${ch.text}</div>
+            <div class="extended-text">${ch.extra}</div>
+            <div class="divider" style="width: 50px; margin-top: 1.6rem;"></div>
+          `;
+          storyContainer.appendChild(chapterDiv);
+        });
+
+        
+        const outroDiv = document.createElement('div');
+        outroDiv.className = 'outro';
+        outroDiv.innerHTML = `
+          <div class="outro-symbol">🌌💖🌌</div>
+          <h2>And so their legend lives on</h2>
+          <div class="divider"></div>
+          <div class="outro-message">
+            From the bridge of forgotten stars to a kingdom reborn, Elias and Seraphina taught the world that love knows no station — only courage, kindness, and the magic of two hearts daring to dream together.
+          </div>
+          <div class="outro-signature">— Starlit Hearts, forever —</div>
+          <div class="divider" style="width: 80px; margin-top: 2.2rem;"></div>
+        `;
+        storyContainer.appendChild(outroDiv);
+      }
+
+      renderStory();
+
+     
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const el = entry.target;
+          if (entry.isIntersecting) {
+            el.style.boxShadow = '0 32px 62px rgba(150, 90, 235, 0.65), 0 0 55px rgba(255, 185, 235, 0.7)';
+            el.style.borderColor = 'rgba(255, 235, 250, 0.75)';
+            el.style.transition = 'box-shadow 1s, border-color 0.8s';
+          } else {
+            el.style.boxShadow = '0 25px 45px rgba(0,0,0,0.65), 0 0 35px rgba(130, 80, 210, 0.25)';
+            el.style.borderColor = 'rgba(255, 210, 245, 0.2)';
+          }
+        });
+      }, { threshold: 0.45, rootMargin: '0px 0px -30px 0px' });
+
+      setTimeout(() => {
+        document.querySelectorAll('.chapter, .outro').forEach(el => observer.observe(el));
+      }, 350);
+
+      console.log('🌟 Masterwork fantasy saga ready. Crafted with love over a year of starlight.');
+    })();
+  </script>
+</body>
+</html>
